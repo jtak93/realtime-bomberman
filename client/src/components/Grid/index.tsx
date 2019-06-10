@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { resetBoard } from '../../actions/grid'
 
 const GridStyled = styled.div`
   background: lightgray;
@@ -8,11 +10,36 @@ const GridStyled = styled.div`
   margin: 20px auto;
 `;
 
-export class Grid extends Component<{}> {
+interface GridProps {
+  grid: []
+}
+
+export class Grid extends Component<GridProps> {
+    componentDidMount() {
+      console.log('grid mounted', this.props)
+    }
 
     render() {
-        return <GridStyled></GridStyled>;
+        return (
+        <GridStyled>
+          {this.props.grid.map((row, index) => {
+            return <div key={index}>{row}</div>
+          })}
+        </GridStyled>
+        );
     }
 }
 
-export default Grid;
+
+const mapStateToProps = state => ({
+  grid: state.grid
+})
+
+const mapDispatchToProps = dispatch => ({
+  resetBoard: () => dispatch(resetBoard())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Grid)
