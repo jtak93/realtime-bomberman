@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { resetBoard } from '../../actions/grid'
+import GridRow from '../GridRow/GridRow';
 
 const GridStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   background: lightgray;
-  height: 600px;
-  width: 800px;
+  height: 100%;
+  width: 100%;
   margin: 20px auto;
 `;
 
@@ -23,7 +26,7 @@ export class Grid extends Component<GridProps> {
         return (
         <GridStyled>
           {this.props.grid.map((row, index) => {
-            return <div key={index}>{row}</div>
+            return <GridRow key={index} rowData={row}></GridRow>
           })}
         </GridStyled>
         );
