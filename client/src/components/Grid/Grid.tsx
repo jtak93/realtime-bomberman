@@ -7,9 +7,8 @@ import GridRow from '../GridRow/GridRow';
 const GridStyled = styled.div`
   display: flex;
   flex-direction: column;
-  background: lightgray;
   height: 100%;
-  width: 100%;
+  width: 50%;
   margin: 20px auto;
 `;
 
