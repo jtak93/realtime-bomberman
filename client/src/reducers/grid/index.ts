@@ -1,5 +1,5 @@
-import gridJSON from '../../data/grid'
-const initialState = gridJSON.grid;
+import { generateNewGrid } from '../../data/grid'
+const initialState = generateNewGrid();
 const grid = (state = initialState, action: any) => {
     switch (action.type) {
         case 'RESET_GRID':

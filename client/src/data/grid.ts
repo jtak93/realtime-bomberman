@@ -17,7 +17,7 @@ const tileArray = [emptyTile, wallTile];
  * @param row 
  * @param col 
  */
-const generateNewGrid = (rowLen = 14, colLen = 14) => {
+export const generateNewGrid = (rowLen = 14, colLen = 14) => {
     console.log('generating new grid')
     const ret:Tile[][] = [];
     // generate top wall
@@ -43,10 +43,3 @@ const generateNewGrid = (rowLen = 14, colLen = 14) => {
 const getRandomTile = (tiles: Tile[]) => {
     return tiles[Math.floor(Math.random() * tiles.length)];
 }
-
-
-const gridData = {
-    grid: generateNewGrid()
-}
-
-export default gridData;
