@@ -1,3 +1,4 @@
+
 interface Tile {
     bgColor: string;
 }
@@ -7,37 +8,49 @@ const emptyTile = {
 }
 
 const wallTile = {
-    bgColor: "#D3D3D3"
+    bgColor: "darkgray"
 }
 
-const tileArray = [emptyTile, wallTile];
+const destructibleTile = {
+    bgColor: "lightgray"
+}
+
+const tileArray = [emptyTile, wallTile, destructibleTile];
 
 /**
  * @return 2D Array of grid tiles
- * @param row 
- * @param col 
+ * @param row use odd numbered rows for checkered walls
+ * @param col use odd numbered columns for checkered walls
  */
-export const generateNewGrid = (rowLen = 14, colLen = 14) => {
+export const generateNewGrid = (rowLen = 11, colLen = 19) => {
     console.log('generating new grid')
-    const ret:Tile[][] = [];
-    // generate top wall
-    const wallRow: Tile[] = []
-    for (let i = 0; i < rowLen; i++) {
-        wallRow.push(wallTile);
-    }
-    ret.push(wallRow)
-    // generate rows
-    for (let i = 1; i < colLen - 1; i++) {
-        const row: Tile[] = [];
-        row.push(wallTile);
-        for (let j = 1; j < rowLen - 1; j++) {
-            row.push(getRandomTile(tileArray))
+    
+    const grid:Tile[][] = [];
+    // initialize all tiles as walls
+    for (let r = 0; r < rowLen; r++) {
+        grid.push([]);
+        for (let c = 0; c < colLen; c++) {
+            grid[r].push(wallTile)
         }
-        row.push(wallTile)
-        ret.push(row)
-    } 
-    ret.push(wallRow)
-    return ret;
+    }
+    // generate empty rows w/ wall
+    for (let i = 1; i < rowLen - 1; i++) {
+        // left wall
+        grid[i][0] = wallTile;
+        // right wall
+        grid[i][colLen-1] = wallTile;
+        for (let j = 1; j < colLen - 1; j++) {
+            grid[i][j] = emptyTile;
+        }
+    }
+
+    // generate checkered walls
+    for (let r = 2; r < rowLen - 1; r += 2) {
+        for (let c = 2; c < colLen - 1; c += 2) {
+            grid[r][c] = wallTile;
+        }
+    }
+    return grid;
 }
 
 const getRandomTile = (tiles: Tile[]) => {
