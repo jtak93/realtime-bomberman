@@ -9,7 +9,8 @@ interface GridTileProps {
 
 const GridTile: React.FC<GridTileProps> = (props) => {
     return (
-        <div className={props.className}></div>
+        <div className={props.className}>
+        </div>
     );
 }
 

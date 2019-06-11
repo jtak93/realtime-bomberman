@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Grid from './components/Grid/Grid';
+import { World } from './components/World/World';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Grid />
+      <World></World>
     </div>
   );
 }

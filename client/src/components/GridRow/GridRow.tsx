@@ -8,7 +8,7 @@ const RowStyled = styled.div`
 `
 
 interface GridRowProps {
-    rowData
+    rowData,
 }
 const GridRow: React.FC<GridRowProps> = (props) => {
     return (
