@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Grid from '../Grid/Grid';
 import Player from '../Player/Player';
+import { ROWS, COLS, TILE_SIZE } from '../../config/constants';
 
 const WorldStyled = styled.div`
-  height: 600px;
-  width: 800px;
-  margin: 20px auto;
+  height: ${ROWS * TILE_SIZE}px;
+  width: ${COLS * TILE_SIZE}px;
+  margin: 10px auto;
 `;
 
 interface WorldProps {}

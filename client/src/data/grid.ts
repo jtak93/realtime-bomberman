@@ -1,4 +1,4 @@
-
+import { ROWS, COLS, TILE_SIZE } from '../config/constants';
 interface Tile {
     bgColor: string;
 }
@@ -22,7 +22,7 @@ const tileArray = [emptyTile, wallTile, destructibleTile];
  * @param row use odd numbered rows for checkered walls
  * @param col use odd numbered columns for checkered walls
  */
-export const generateNewGrid = (rowLen = 11, colLen = 19) => {
+export const generateNewGrid = (rowLen = ROWS, colLen = COLS) => {
     console.log('generating new grid')
     
     const grid:Tile[][] = [];

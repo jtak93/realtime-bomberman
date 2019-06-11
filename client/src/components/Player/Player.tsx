@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import handleMovement from './movement'
+import { TILE_SIZE } from '../../config/constants';
 
 interface PlayerProps {
     position?
@@ -14,8 +15,8 @@ export class Player extends Component<PlayerProps> {
             <div
                 style={{
                     position: 'relative',
-                    top: this.props.position[1] * 52,
-                    left: this.props.position[0] * 42,
+                    top: this.props.position[1] * TILE_SIZE + 50,
+                    left: this.props.position[0] * TILE_SIZE,
                     height: '50px',
                     width: '50px'
                 }}>

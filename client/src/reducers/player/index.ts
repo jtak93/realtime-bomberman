@@ -2,7 +2,7 @@ const initialState = [
     {   
         name: 'Player 1',
         index: 0,
-        position: [1, 2]
+        position: [1, 1]
     }
 ]
 const players = (state = initialState, action: any) => {

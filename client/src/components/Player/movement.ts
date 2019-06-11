@@ -4,6 +4,8 @@ export default function handleMovement(player) {
 
     function getNewPosition(direction) {
         const oldPos = store.getState().players[0].position
+        const grid = store.getState().grid;
+        console.log(grid)
         switch (direction) {
             case 'WEST':
                 return [oldPos[0] - 1, oldPos[1]]
