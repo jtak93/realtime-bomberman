@@ -15,8 +15,8 @@ export class Player extends Component<PlayerProps> {
             <div
                 style={{
                     position: 'relative',
-                    top: this.props.position[1] * TILE_SIZE + 50,
-                    left: this.props.position[0] * TILE_SIZE,
+                    top: this.props.position[0] * TILE_SIZE + 50,
+                    left: this.props.position[1] * TILE_SIZE,
                     height: '50px',
                     width: '50px'
                 }}>

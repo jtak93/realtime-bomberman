@@ -1,4 +1,5 @@
-import store from '../../config/store'
+import store from '../../config/store';
+import { TileType } from '../../data/grid';
 
 export default function handleMovement(player) {
 
@@ -6,16 +7,22 @@ export default function handleMovement(player) {
         const oldPos = store.getState().players[0].position
         const grid = store.getState().grid;
         console.log(grid)
+        let newPos;
         switch (direction) {
             case 'WEST':
-                return [oldPos[0] - 1, oldPos[1]]
+                newPos = [oldPos[0], oldPos[1] - 1]
+                break;
             case 'EAST':
-                return [oldPos[0] + 1, oldPos[1]]
+                newPos = [oldPos[0], oldPos[1] + 1]
+                break;
             case 'NORTH':
-                return [oldPos[0], oldPos[1] - 1]
+                newPos = [oldPos[0] - 1, oldPos[1]]
+                break;
             case 'SOUTH':
-                return [oldPos[0], oldPos[1] + 1]
+                newPos = [oldPos[0] + 1, oldPos[1]]
+                break;
         }
+        return (checkBounds(grid, newPos)) ? newPos : oldPos;
     }
 
     function dispatchMove(direction) {
@@ -45,6 +52,14 @@ export default function handleMovement(player) {
 
             default:
                 console.log(e.keyCode)
+        }
+    }
+    function checkBounds(grid, pos) {
+        console.log('grid', grid)
+        if (grid[pos[0]][pos[1]].type === TileType.wallTile) {
+            return false
+        } else {
+            return true;
         }
     }
 
