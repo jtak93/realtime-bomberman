@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Grid from '../Grid/Grid';
 import Player from '../Player/Player';
 import { ROWS, COLS, TILE_SIZE } from '../../config/constants';
-import { Bomb } from '../Bomb/Bomb';
+import Bomb from '../Bomb/Bomb';
 
 
 interface WorldProps {
@@ -22,8 +22,9 @@ export class World extends Component<WorldProps> {
                     margin: '10px auto'
                 }}>
                 <Player></Player>
-                {this.props.bombs.map((bomb, idx) =>{
-                    return <Bomb key={idx} data={bomb}></Bomb>
+                
+                {[...this.props.bombs].map(([key, bomb]) =>{
+                    return <Bomb key={key} id={key} bomb={bomb}></Bomb>
                 })}
                 <Grid>
                 </Grid>
