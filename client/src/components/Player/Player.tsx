@@ -9,7 +9,6 @@ interface PlayerProps {
 
 export class Player extends Component<PlayerProps> {
     render() {
-        console.log(this.props)
         return (
             <div
                 style={{

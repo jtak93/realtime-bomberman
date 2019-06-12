@@ -7,13 +7,25 @@ const bombs = (state = initialState, action: any) => {
             const id = uuid();
             const newBomb = {
                 id: id,
-                position: action.payload.position
+                position: action.payload.position,
+                exploded: false,
+                power: 1,
             }
             state.set(id, newBomb)
             return new Map(state);
         case 'EXPLODE_BOMB':
             console.log('bomb exploded', action)
-            state.delete(action.id)
+            const prevBomb = state.get(action.id);
+            const explodedBomb = {
+                ...prevBomb,
+                exploded: true
+            }
+            state.set(action.id, explodedBomb)
+            // state.delete(action.id)
+            return new Map(state);
+        case 'REMOVE_BOMB':
+            console.log('remving bomb')
+            state.delete(action.id);
             return new Map(state);
         default:
             return state;

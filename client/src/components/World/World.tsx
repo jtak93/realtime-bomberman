@@ -13,7 +13,6 @@ interface WorldProps {
 export class World extends Component<WorldProps> {
 
     render() {
-        console.log("world props", this.props)
         return (
             <div
                 style={{

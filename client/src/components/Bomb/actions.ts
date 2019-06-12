@@ -5,3 +5,10 @@ export function explodeBomb(id) {
         id
     }
 }
+export function removeBomb(id) {
+
+    return {
+        type: 'REMOVE_BOMB',
+        id
+    }
+}

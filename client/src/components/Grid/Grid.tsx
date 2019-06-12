@@ -15,7 +15,7 @@ interface GridProps {
 
 export class Grid extends Component<GridProps> {
     componentDidMount() {
-      console.log('grid mounted', this.props)
+      // console.log('grid mounted', this.props)
     }
 
     render() {

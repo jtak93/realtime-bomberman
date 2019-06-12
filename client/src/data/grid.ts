@@ -33,9 +33,7 @@ const destructibleTile = {
  * @param row use odd numbered rows for checkered walls
  * @param col use odd numbered columns for checkered walls
  */
-export const generateNewGrid = (rowLen = ROWS, colLen = COLS) => {
-    console.log('generating new grid')
-    
+export const generateNewGrid = (rowLen = ROWS, colLen = COLS) => {    
     const grid:Tile[][] = [];
     // initialize all tiles as walls
     for (let r = 0; r < colLen; r++) {
