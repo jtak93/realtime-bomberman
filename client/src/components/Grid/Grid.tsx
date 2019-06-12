@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { resetBoard } from '../../actions/grid'
 import GridRow from '../GridRow/GridRow';
-import Player from '../Player/Player';
 
 const GridStyled = styled.div`
   display: flex;
@@ -32,8 +31,7 @@ export class Grid extends Component<GridProps> {
 
 
 const mapStateToProps = state => ({
-  grid: state.grid,
-  players: state
+  grid: state.grid
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,10 +1,12 @@
 import store from '../../config/store';
 import { TileType } from '../../data/grid';
 
-export default function handleMovement(player) {
-
+export default function handlePlayerActions(player) {
+    function getCurrentPlayerPosition() {
+        return store.getState().players[0].position
+    }
     function getNewPosition(direction) {
-        const oldPos = store.getState().players[0].position
+        const oldPos = getCurrentPlayerPosition();
         const grid = store.getState().grid;
         console.log(grid)
         let newPos;
@@ -34,19 +36,32 @@ export default function handleMovement(player) {
         })
     }
 
+    function dispatchBomb() {
+        store.dispatch({
+            type: 'PLACE_BOMB',
+            payload: {
+                position: getCurrentPlayerPosition()
+            }
+        })
+    }
+
     function handleKeyDown(e) {
         e.preventDefault()
 
         switch (e.keyCode) {
+            // Space Bar
+            case 32:
+                return dispatchBomb()
+            // Left Key
             case 37:
                 return dispatchMove('WEST')
-
+            // Up Key
             case 38:
                 return dispatchMove('NORTH')
-
+            // Right Key
             case 39:
                 return dispatchMove('EAST')
-
+            // Down Key
             case 40:
                 return dispatchMove('SOUTH')
 

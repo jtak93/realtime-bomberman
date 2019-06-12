@@ -1,6 +1,8 @@
-import { ROWS, COLS, TILE_SIZE } from '../config/constants';
+import { ROWS, COLS } from '../config/constants';
 interface Tile {
     bgColor: string;
+    type: TileType;
+    bomb?;
 }
 
 export enum TileType {
@@ -24,7 +26,7 @@ const destructibleTile = {
     bgColor: "lightgray"
 }
 
-const tileArray = [emptyTile, wallTile, destructibleTile];
+// const tileArray = [emptyTile, wallTile, destructibleTile];
 
 /**
  * @return 2D Array of grid tiles

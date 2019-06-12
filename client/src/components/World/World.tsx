@@ -1,30 +1,44 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Grid from '../Grid/Grid';
 import Player from '../Player/Player';
 import { ROWS, COLS, TILE_SIZE } from '../../config/constants';
+import { Bomb } from '../Bomb/Bomb';
 
-const WorldStyled = styled.div`
-  height: ${ROWS * TILE_SIZE}px;
-  width: ${COLS * TILE_SIZE}px;
-  margin: 10px auto;
-`;
 
-interface WorldProps {}
+interface WorldProps {
+    bombs?
+}
 
 export class World extends Component<WorldProps> {
+
     render() {
+        console.log("world props", this.props)
         return (
-            <WorldStyled>
+            <div
+                style={{
+                    height: `${ROWS * TILE_SIZE}px`,
+                    width: `${COLS * TILE_SIZE}px`,
+                    margin: '10px auto'
+                }}>
                 <Player></Player>
-                <Grid></Grid>
-            </WorldStyled>
+                {this.props.bombs.map((bomb, idx) =>{
+                    return <Bomb key={idx} data={bomb}></Bomb>
+                })}
+                <Grid>
+                </Grid>
+            </div>
         );
     }
 }
+const mapStateToProps = state => ({
+    bombs: state.bombs
+})
 
+const mapDispatchToProps = dispatch => ({
+    resetBoard: () => dispatch()
+})
 export default connect(
-    null,
-    null
-)(WorldStyled)
+    mapStateToProps,
+    mapDispatchToProps,
+)(World)
