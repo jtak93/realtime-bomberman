@@ -8,19 +8,22 @@ interface ExplosionGroupProps {
 }
 
 const ExplosionGroup: React.FC<ExplosionGroupProps> = (props) => {
-    console.log("explosion props", props)
     const { position, power } = props.bomb;
-    const powArr = new Array(power);
+    const arrPow = new Array(5).fill(0);
     return (
         <div>
-
             <Explosion x={position[1]} y={position[0]}></Explosion>
-
-            <Explosion x={position[1]-1} y={position[0]}></Explosion>
-            <Explosion x={position[1]+1} y={position[0]}></Explosion>
-            <Explosion x={position[1]} y={position[0]-1}></Explosion>
-            <Explosion x={position[1]} y={position[0]+1}></Explosion>
-
+            {arrPow.map((n, idx) => {
+                const inc = idx + 1;
+                return (
+                    <div key={idx} style={{display: 'hidden'}}>
+                        <Explosion x={position[1] - inc} y={position[0]}></Explosion>
+                        <Explosion x={position[1] + inc} y={position[0]}></Explosion>
+                        <Explosion x={position[1]} y={position[0] - inc}></Explosion>
+                        <Explosion x={position[1]} y={position[0] + inc}></Explosion>
+                    </div>
+                )
+            })}
         </div>
     );
 }

@@ -14,11 +14,8 @@ const bombTimer = 1000;
 const explosionTimer = 500
 class Bomb extends Component<BombProps> {
     componentDidMount() {
-        console.log("bomb mounted")
         // trigger timeout
         setTimeout(() => {
-            console.log('explode bomb')
-            console.log(this.props)
             this.props.explodeBomb(this.props.id)
         }, bombTimer)
     }
@@ -28,7 +25,6 @@ class Bomb extends Component<BombProps> {
         }, explosionTimer)
     }
     render() {
-        console.log("bomb", JSON.parse(JSON.stringify(this.props)))
         return (
             (!this.props.bomb.exploded) ? (
                 <div
