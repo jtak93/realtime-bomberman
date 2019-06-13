@@ -9,6 +9,7 @@ interface BombProps {
     explodeBomb?;
     bomb?;
     id?;
+    grid?;
 }
 const bombTimer = 1000;
 const explosionTimer = 500
@@ -38,13 +39,14 @@ class Bomb extends Component<BombProps> {
                     O
                 </div>)
             :
-            <ExplosionGroup bomb={this.props.bomb}></ExplosionGroup>
+            <ExplosionGroup bomb={this.props.bomb} grid={this.props.grid}></ExplosionGroup>
             
         );
     }
 }
 
 const mapStateToProps = state => ({
+    grid: state.grid
 })
 
 const mapDispatchToProps = dispatch => ({

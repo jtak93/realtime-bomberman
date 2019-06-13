@@ -52,6 +52,7 @@ export const generateNewGrid = (rowLen = ROWS, colLen = COLS) => {
             grid[i][j] = emptyTile;
         }
     }
+    grid[2][1] = destructibleTile;
 
     // generate checkered walls
     for (let r = 2; r < colLen - 1; r += 2) {

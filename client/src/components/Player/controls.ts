@@ -71,7 +71,8 @@ export default function handlePlayerActions(player) {
     }
     function checkBounds(grid, pos) {
         console.log('grid', grid)
-        if (grid[pos[0]][pos[1]].type === TileType.wallTile) {
+        const tileType = grid[pos[0]][pos[1]].type;
+        if (tileType === TileType.wallTile || tileType === TileType.destructibleTile) {
             return false
         } else {
             return true;
